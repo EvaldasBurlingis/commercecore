@@ -87,7 +87,7 @@ export default function Checkout({cart}) {
                                     </div>
 
                                     <div className={'lg:flex'}>
-                                        <div className={'mb-4 lg:w-1/2 mr-4'}>
+                                        <div className={'mb-4 lg:w-1/2 lg:mr-4'}>
                                             <Input id={'customer_first_name'}
                                                    value={data.customer_first_name}
                                                    onChange={(e) => setData('customer_first_name', e.target.value)}
@@ -125,11 +125,11 @@ export default function Checkout({cart}) {
                                         <InputError className={'mt-1'} message={errors.customer_address}/>
                                     </div>
                                     <div className={'lg:flex'}>
-                                        <div className={'mb-4 lg:w-1/3 mr-4'}>
+                                        <div className={'mb-4 lg:w-1/3 lg:mr-4'}>
                                             <CountrySelect onChange={handleCountrySelect}/>
                                             <InputError className={'mt-1'} message={errors.customer_country}/>
                                         </div>
-                                        <div className={'mb-4 lg:w-1/3 mr-4'}>
+                                        <div className={'mb-4 lg:w-1/3 lg:mr-4'}>
                                             <Select
                                                 onValueChange={(field) => setData('customer_state', field)}
                                                 disabled={countryStates.length <= 0}>
@@ -167,7 +167,7 @@ export default function Checkout({cart}) {
                                         <div className={'p-4'}>
                                             <h4>Credit Card</h4>
                                         </div>
-                                        <div className={'bg-zinc-50 p-4'}>
+                                        <div className={'bg-zinc-50 p-4 border-t border-cs-gray-1'}>
                                             <div className={'mb-4'}>
                                                 <Input id={'cc_number'}
                                                        value={data.cc_number}
@@ -180,7 +180,7 @@ export default function Checkout({cart}) {
                                                 <InputError className={'mt-1'} message={errors.cc_number}/>
                                             </div>
                                             <div className={'flex'}>
-                                                <div className={'mr-2 w-1/2'}>
+                                                <div className={'mr-2 w-1/2 lg:w-1/4'}>
                                                     <Input id={'cc_expiration_date'}
                                                            value={data.cc_expiration_date}
                                                            onChange={handleExpirationDateChange}
@@ -191,7 +191,7 @@ export default function Checkout({cart}) {
                                                            autoComplete={'cc_expiration_date'}/>
                                                     <InputError className={'mt-1'} message={errors.cc_expiration_date}/>
                                                 </div>
-                                                <div className={'w-1/2'}>
+                                                <div className={'w-1/2 lg:w-1/4'}>
                                                     <Input id={'cc_cvv'}
                                                            className={'block'}
                                                            type={'number'}
@@ -207,12 +207,12 @@ export default function Checkout({cart}) {
                                         </div>
                                     </div>
                                 </div>
-                                <Button onClick={handleSubmit} variant={'checkout'} className={'w-full'}
+                                <Button onClick={handleSubmit} variant={'checkout'} className={'w-full'} size={'xl'}
                                         disabled={processing || checkoutCart.items.length <= 0}>COMPLETE
                                     ORDER</Button>
 
                                 <div className={'flex justify-center'}>
-                                    <img src="https://placehold.jp/91x49.png" className={'my-4 mx-2 w-1/4 lg:max-w-20'}
+                                    <img src="https://placehold.jp/91x49.png" className={'my-4 mx-2 w-1/4 lg:max-w-24'}
                                          alt=""/>
                                     <img src="https://placehold.jp/91x49.png" className={'my-4 mx-2 w-1/4 lg:max-w-24'}
                                          alt=""/>
@@ -229,7 +229,7 @@ export default function Checkout({cart}) {
                     {checkoutCart.items.map((cartItem, index) => (<div key={cartItem.id}>
                         <div
                             className={`cart-item transition-all duration-200 flex justify-between items-center ${index === 0 ? 'pb-4' : 'py-4'}`}>
-                            <div className={'w-1/6'}><img src="https://placehold.jp/58x59.png" alt=""/></div>
+                            <div className={'w-1/6'}><img src="https://placehold.jp/72x72.png" alt=""/></div>
                             <div className={'w-4/6 text-sm ml-5 m'}>
                                 <div className={'mb-1'}>
                                     <span className={'font-bold'}>{cartItem.quantity}x</span>
