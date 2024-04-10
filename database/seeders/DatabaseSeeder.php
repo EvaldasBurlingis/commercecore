@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +15,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Product::factory()->createMany([
+                [
+                    'name' => 'CoreProduct®',
+                    'price' => 13.33,
+                ],
+                [
+                    'name' => 'AddonCoreProduct®',
+                    'price' => 9.99,
+                ]]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $product = Product::where('name', 'CoreProduct®')->first();
+        $addonProduct = Product::where('name', 'AddonCoreProduct®')->first();
+
+        $cart = Cart::factory()->create();
+
+        $cart->items()->createMany([
+            [
+                'product_id' => $product->id,
+                'quantity' => 3,
+                'price' => $product->price,
+            ],
+            [
+                'product_id' => $addonProduct->id,
+                'quantity' => 1,
+                'price' => $addonProduct->price,
+            ],
         ]);
     }
 }

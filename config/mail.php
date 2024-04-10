@@ -100,4 +100,10 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'order' => [
+        'received' => [
+            'address' => env('MAIL_ORDER_RECEIVED_ADDRESS', 'order@example.com'),
+        ],
+    ]
+
 ];
