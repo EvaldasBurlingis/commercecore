@@ -15,7 +15,7 @@ export default function Checkout({cart}) {
     })
 
     const [countryStates, setCountryStates] = useState([])
-    const {data, setData, post, processing, errors, reset} = useForm({
+    const {data, setData, post, processing, errors} = useForm({
         customer_first_name: '',
         customer_last_name: '',
         customer_address: '',
